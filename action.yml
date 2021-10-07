@@ -1,0 +1,46 @@
+# action.yml
+name: 'rancher-compose up -d action'
+description: 'A rancher-compose up -d action'
+branding:
+  icon: server
+  color: green
+inputs:
+  RANCHER_URL:
+    description: 'Rancher URL'
+    required: true
+    default: 'http://rancher.example:8080'
+  RANCHER_ACCESS_KEY:
+    description: 'Rancher ACCESS_KEY'
+    required: true
+    default: ''
+  RANCHER_SECRET_KEY:
+    description: 'Rancher SECRET_KEY'
+    required: true
+    default: ''
+  RANCHER_COMPOSE_FILE:
+    description: 'rancher-compose.yml'
+    required: true
+    default: 'rancher-compose.yml'
+  DOCKER_COMPOSE_FILE:
+    description: 'docker-compose.yml'
+    required: true
+    default: 'docker-compose.yml'
+  STACK_NAME:
+    description: 'Stack name'
+    required: true
+    default: 'default'
+  ENV_FILE:
+    description: 'ENV file'
+    required: false
+    default: ''
+runs:
+  using: 'docker'
+  image: './Dockerfile'
+  args:
+    - ${{ inputs.RANCHER_URL }}
+    - ${{ inputs.RANCHER_ACCESS_KEY }}
+    - ${{ inputs.RANCHER_SECRET_KEY }}
+    - ${{ inputs.RANCHER_COMPOSE_FILE }}
+    - ${{ inputs.DOCKER_COMPOSE_FILE }}
+    - ${{ inputs.STACK_NAME }}
+    - ${{ inputs.ENV_FILE }}
