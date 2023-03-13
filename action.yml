@@ -33,6 +33,13 @@ inputs:
     description: 'ENV file'
     required: false
     default: ''
+  CHECK_SERVICE:
+    description: 'Check service for state is active. "StackName/ServiceName"'
+    required: false
+    default: ''
+outputs:
+  skipped:
+    description: 'True if the deployment was skipped'
 runs:
   using: 'docker'
   image: './Dockerfile'
@@ -44,3 +51,4 @@ runs:
     - ${{ inputs.DOCKER_COMPOSE_FILE }}
     - ${{ inputs.STACK_NAME }}
     - ${{ inputs.ENV_FILE }}
+    - ${{ inputs.CHECK_SERVICE }}
