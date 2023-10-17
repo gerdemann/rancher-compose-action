@@ -32,6 +32,10 @@ This action executes `rancher-compose up -d`.
 
 **Required** The .env file. Default `""`.
 
+## `PULL_IMAGES`
+
+Pull Docker images before upgrading. Default `"false"`.
+
 ## Example usage
 
 ```
@@ -44,5 +48,6 @@ with:
   DOCKER_COMPOSE_FILE: 'docker-compose.yml'
   STACK_NAME: 'example'
   ENV_FILE: '.env'
+  PULL_IMAGES: 'true'
 
 ```

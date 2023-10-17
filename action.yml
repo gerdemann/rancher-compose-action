@@ -37,6 +37,10 @@ inputs:
     description: 'Check service for state is active. "StackName/ServiceName"'
     required: false
     default: ''
+  PULL_IMAGES:
+    description: 'Pull Docker images before upgrading'
+    required: false
+    default: 'false'
 outputs:
   skipped:
     description: 'True if the deployment was skipped'
@@ -52,3 +56,4 @@ runs:
     - ${{ inputs.STACK_NAME }}
     - ${{ inputs.ENV_FILE }}
     - ${{ inputs.CHECK_SERVICE }}
+    - ${{ inputs.PULL_IMAGES }}
